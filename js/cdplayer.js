@@ -332,7 +332,7 @@ function BasicMP3Player() {
 
 	if(IS_USED_PJAX && IS_USED_PJAX==="true"){
 		//针对pjax加载内容区重载播放器
-		jQuery(document).on('pjax:send', reload);
+		jQuery(document).on('pjax:complete', reload);
 		jQuery(window).on('popstate', reload)
 		function reload(){
 			self.destroySound();

@@ -3,14 +3,14 @@
 	Plugin Name: CDPlayer
 	Plugin URI: http://www.ancelee.com
 	Description: 简单的单曲音乐播放器，支持多文件格式(.mp3 or .ogg)， 支持多平台(Android, iPhone)。
-	Version: 1.0
+	Version: 1.0.1
 	Author: AnceLee
 	Author URI: http://www.ancelee.com/
 	License: GPL
  */
 
-define('SC_AUDIO_PLUGIN_VERSION', '1.0.0');
-define('SC_AUDIO_BASE_URL', plugins_url('/', __FILE__));
+define('CDPLAYER_AUDIO_PLUGIN_VERSION', '1.0.1');
+define('CDPLAYER_AUDIO_BASE_URL', plugins_url('/', __FILE__));
 
 include_once ('shortcodes-functions.php');
 
@@ -18,17 +18,17 @@ add_action('init', 'wp_sc_audio_init');
 
 function wp_sc_audio_init() {
 	if (!is_admin()) {
-		wp_register_script('cdplayer-soundmanager2', SC_AUDIO_BASE_URL . 'js/soundmanager2-nodebug-jsmin.js', array(), SC_AUDIO_PLUGIN_VERSION, true);
+		wp_register_script('cdplayer-soundmanager2', CDPLAYER_AUDIO_BASE_URL . 'js/soundmanager2-nodebug-jsmin.js', array(), CDPLAYER_AUDIO_PLUGIN_VERSION, true);
 		wp_enqueue_script('cdplayer-soundmanager2');
-		wp_register_script('cdplayer-player', SC_AUDIO_BASE_URL . 'js/cdplayer.js', array(), SC_AUDIO_PLUGIN_VERSION, true);
+		wp_register_script('cdplayer-player', CDPLAYER_AUDIO_BASE_URL . 'js/cdplayer.js', array(), CDPLAYER_AUDIO_PLUGIN_VERSION, true);
 		wp_enqueue_script('cdplayer-player');
-		wp_register_style('cdplayer', SC_AUDIO_BASE_URL . 'css/player.css', array(), SC_AUDIO_PLUGIN_VERSION );
+		wp_register_style('cdplayer', CDPLAYER_AUDIO_BASE_URL . 'css/player.css', array(), CDPLAYER_AUDIO_PLUGIN_VERSION );
 		wp_enqueue_style('cdplayer');
 	}
 }
 
 function scap_footer_code() {
-	$debug_marker = "<!-- CDPlayer plugin v" . SC_AUDIO_PLUGIN_VERSION . " - https://www.ancelee.com-->";
+	$debug_marker = "<!-- CDPlayer plugin v" . CDPLAYER_AUDIO_PLUGIN_VERSION . " - https://www.ancelee.com-->";
 	echo "\n${debug_marker}\n";
 	?>
 	<script type="text/javascript">
